@@ -10,16 +10,17 @@ import (
 )
 
 func flags() {
-	flag.StringVar(&URL, "url", "",
+	flag.StringVar(&URL, "url", "https://www.alphavantage.co",
 		"Default URL")
 	flag.StringVar(&Symbol, "symbol", "",
 		"Stock symbol")
-	flag.StringVar(&QueryFunction, "query", "",
-		"Query to call for stock")
+	flag.StringVar(&QueryFunction, "query", "TIME_SERIES_DAILY",
+		"Query data for stock. See documentation for functions.")
 	flag.StringVar(&Key, "key", os.Getenv("KEY"),
-		"API Key used for authentication")
-	flag.StringVar(&FileName, "file", "output.json",
-		"Add filename to export output of call into")
+		"API Key used for authentication. Add as an environment variable (recommended) "+
+			"or add it in the CLI (not recommended).")
+	flag.StringVar(&FileName, "file", "",
+		"Add filename to export output data into. If empty, then no file will be created.")
 	flag.StringVar(&DataType, "datatype", "json",
 		"Default is JSON or you can choose CSV.")
 	flag.Parse()
